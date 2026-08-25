@@ -4,8 +4,8 @@
     "val_records": "data/records/val_records.json",
     "test_records": "data/records/test_records.json",
     "asset_views": "data/records/asset_views.json",
-    "image_size": 128,
-    "batch_size": 32,
+    "image_size": 504,
+    "batch_size": 64,
     "num_workers": 0
   },
   "model": {
@@ -13,14 +13,14 @@
     "embedding_dim": 128
   },
   "training": {
-    "epochs": 20,
-    "learning_rate": 0.001,
-    "weight_decay": 0.0001,
-    "device": "auto",
-    "use_contrastive": false,
-    "contrastive_weight": 0.5,
-    "temperature": 0.07,
-    "log_every": 20
+  "epochs": 100,
+  "learning_rate": 0.0005,
+  "weight_decay": 0.0001,
+  "device": "auto",
+  "use_contrastive": true,
+  "contrastive_weight": 0.3,
+  "temperature": 0.07,
+  "log_every": 20
   },
   "output": {
     "checkpoint_dir": "checkpoints",
