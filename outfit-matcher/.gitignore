@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+runs/
+tests/_smoke_data/
+tests/_smoke_runs/
+*.pt
+!configs/**
+.catalog

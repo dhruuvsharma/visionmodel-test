@@ -1,0 +1,52 @@
+# Smoke-test config: tiny model, CPU-friendly, synthetic data paths
+model:
+  img_size: 64
+  patch_size: 16   # 4x4=16 patches
+  dim: 64
+  depth: 2
+  heads: 2
+  mlp_ratio: 2.0
+  drop_rate: 0.0
+  drop_path_rate: 0.0
+  proj_dim: 32
+
+data:
+  manifest: tests/_smoke_data/manifests/manifest_train.jsonl
+  val_manifest: tests/_smoke_data/manifests/manifest_val.jsonl
+  img_size: 64
+  bg_key_tolerance: 0.08
+  bg_key_grow: 1
+  p_composite: 0.5
+  min_scale: 0.6
+  max_scale: 1.0
+  color_jitter: 0.3
+  p_gray: 0.1
+  p_perspective: 0.2
+  p_occlusion: 0.3
+  occlusion_scale: [0.05, 0.2]
+  p_blur: 0.2
+  p_noise: 0.2
+
+train:
+  epochs: 2
+  garments_per_batch: 4
+  views_per_garment: 2
+  workers: 0
+  lr: 0.0005
+  min_lr: 0.00005
+  warmup_epochs: 1
+  weight_decay: 0.05
+  temperature: 0.1
+  aux_ce_weight: 0.5
+  grad_clip: 1.0
+  ema_decay: 0.99
+  bf16: false
+  log_every: 5
+  eval_every: 1
+  out_dir: tests/_smoke_runs
+  resume: null
+  seed: 42
+
+eval:
+  batch_size: 8
+  recall_k: [1, 5]
